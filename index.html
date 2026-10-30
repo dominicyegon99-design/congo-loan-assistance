@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Congo Loan Assistance</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#17243b}
+header{background:#102d58;color:white;padding:24px 18px;text-align:center}
+header h1{font-size:25px;margin:5px}
+header p{color:#d9e5f8}
+main{max-width:600px;margin:25px auto;padding:15px}
+.card{background:white;border-radius:14px;padding:22px;margin-bottom:18px;box-shadow:0 3px 15px #00000010}
+h2{color:#123c70;font-size:21px}
+input{width:100%;padding:13px;margin:9px 0;border:1px solid #ccd5e1;border-radius:8px;font-size:16px}
+button{background:#1457a3;color:white;border:0;padding:14px;border-radius:8px;width:100%;font-size:16px;font-weight:bold;cursor:pointer}
+.result{background:#eaf2ff;padding:15px;border-radius:8px;margin-top:15px}
+.note{font-size:13px;color:#64748b;line-height:1.6}
+footer{text-align:center;padding:25px;color:#64748b;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>CONGO LOAN ASSISTANCE</h1>
+<p>Informations et simulation de prêt en USD</p>
+</header>
+<main>
+<div class="card">
+<h2>Bienvenue</h2>
+<p>Découvrez notre outil indépendant de simulation de prêt et consultez les informations relatives aux conditions de financement.</p>
+<p><strong>Devise :</strong> Dollar américain (USD)</p>
+</div>
+
+<div class="card">
+<h2>Simulateur de prêt</h2>
+<label>Montant souhaité (USD)</label>
+<input type="number" id="amount" placeholder="Exemple : 100" min="1">
+<label>Durée de remboursement (mois)</label>
+<input type="number" id="months" placeholder="Exemple : 3" min="1">
+<button onclick="calculate()">Calculer</button>
+<div id="result" class="result" hidden></div>
+<p class="note">Cette simulation est indicative. Aucun taux d'intérêt ni aucune approbation de crédit n'est garanti.</p>
+</div>
+
+<div class="card">
+<h2>Comment ça fonctionne ?</h2>
+<p>1. Choisissez le montant souhaité.</p>
+<p>2. Sélectionnez la durée de remboursement.</p>
+<p>3. Consultez votre simulation.</p>
+<p>4. Vérifiez les conditions auprès d'un prestataire de crédit indépendant et autorisé avant tout engagement.</p>
+</div>
+
+<div class="card">
+<h2>Informations importantes</h2>
+<p>Ce site est un projet indépendant d'information et de simulation financière.</p>
+<p>Il n'est ni exploité, ni approuvé, ni affilié à Airtel ou Airtel Money.</p>
+<p>Aucune demande de prêt n'est actuellement acceptée sur ce site.</p>
+</div>
+</main>
+<footer>
+© 2026 Congo Loan Assistance<br>
+Service indépendant – Non affilié à Airtel.
+</footer>
+<script>
+function calculate(){
+ const amount=Number(document.getElementById('amount').value);
+ const months=Number(document.getElementById('months').value);
+ const result=document.getElementById('result');
+ if(amount<=0 || months<=0 || !Number.isFinite(amount) || !Number.isInteger(months)){
+  result.hidden=false;
+  result.textContent="Veuillez entrer un montant et une durée valides.";
+  return;
+ }
+ result.hidden=false;
+ result.innerHTML="Montant demandé : $"+amount.toFixed(2)+"<br>Durée : "+months+" mois<br>Remboursement indicatif sans intérêts : $"+(amount/months).toFixed(2)+" par mois.";
+}
+</script>
+</body>
+</html>
+ 
